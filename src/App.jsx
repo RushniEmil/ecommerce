@@ -8,6 +8,7 @@ import { CategoryProvider } from "./contexts/CategoryContext";
 import { useState } from "react";
 import ProductsCart from "./pages/ProductsCart";
 import { CartProvider } from "use-cart";
+import { Navigate } from "react-router-dom";
 
 function App() {
   // State to manage the selected category, default is "beauty"
@@ -23,6 +24,8 @@ function App() {
           <Routes>
             {/* Define the layout and nested routes */}
             <Route path="/" element={<Layout />}>
+              {/* Route redirect to the Login page */}
+              <Route index element={<Navigate to="/bliss/login" />} />
               {/* Route for the Login page */}
               <Route path="bliss/login" element={<Login />} />
               {/* Route for the Registration page */}

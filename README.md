@@ -1,8 +1,41 @@
-# React + Vite
+# Bliss E-commerce Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bliss is a modern e-commerce platform built with React. It provides a seamless shopping experience with features such as product listing, filtering, sorting, user authentication, and a shopping cart.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Demo](#demo)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
+
+<!-- ## Demo
+
+A live demo of the application can be found [here](#). -->
+
+## Features
+
+- **User Authentication**: Login and registration functionality.
+- **Product Listing**: Displays a list of products with infinite scrolling.
+- **Filtering and Sorting**: Filter products by categories and sort them.
+- **Shopping Cart**: Add and remove products from the cart.
+- **Responsive Design**: Optimized for both desktop and mobile devices.
+
+## Installation
+
+### Prerequisites
+
+- Node.js (>= 14.x)
+- npm or yarn
+
+### Steps
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/bliss-ecommerce.git
+   cd bliss-ecommerce
+   npm run dev
+   
