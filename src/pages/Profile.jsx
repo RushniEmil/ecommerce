@@ -4,6 +4,7 @@ import { TextField, Button, Box, Modal, Typography } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import commonStyles from '../styles/commonStyles';
 
 // Validation schema using Yup
 const profileSchema = yup.object({
@@ -81,7 +82,7 @@ const Profile = () => {
             helperText={errors.email?.message}
             disabled
           />
-          <Button variant="outlined" onClick={() => setOpenPasswordModal(true)}>Change Password</Button>
+          <Button variant="outlined" onClick={() => setOpenPasswordModal(true)} sx={commonStyles.button} >Change Password</Button>
           <TextField
             fullWidth
             margin="normal"
@@ -112,7 +113,7 @@ const Profile = () => {
             error={!!errors.pincode}
             helperText={errors.pincode?.message}
           />
-          <Button type="submit" variant="contained" color="primary" fullWidth>
+          <Button type="submit" variant="contained" color="primary" fullWidth sx={commonStyles.button}>
             Update Profile
           </Button>
           <Button variant="outlined" color="error" fullWidth onClick={() => setDeleteConfirmation(true)}>
@@ -147,7 +148,7 @@ const Profile = () => {
               error={!!passwordErrors.confirmPassword}
               helperText={passwordErrors.confirmPassword?.message}
             />
-            <Button type="submit" variant="contained" color="primary" fullWidth>
+            <Button type="submit" variant="contained" color="primary" fullWidth sx={commonStyles.button}>
               Change Password
             </Button>
           </form>

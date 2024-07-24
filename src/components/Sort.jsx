@@ -17,7 +17,7 @@ const Sort = ({ handleSort }) => {
         onChange={handleChange}
         style={commonStyles.select} // Apply common styles
       >
-        <option value="">Default</option>
+        <option value="" >Select</option>
         <option value="asc">Name: A-Z</option>
         <option value="desc">Name: Z-A</option>
       </select>

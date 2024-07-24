@@ -4,6 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { TextField, Button, Box } from "@mui/material";
+import commonStyles from "../styles/commonStyles"; // Import common styles
 
 // Schema validation using Yup
 const schema = yup.object({
@@ -14,26 +15,26 @@ const schema = yup.object({
     .required("Email is required"),
   password: yup
     .string()
-    .required('Password is required')
-    .min(8, 'Password must be at least 8 characters')
+    .required("Password is required")
+    .min(8, "Password must be at least 8 characters")
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
-      'Password must contain at least one uppercase letter, one lowercase letter, and one number'
+      "Password must contain at least one uppercase letter, one lowercase letter, and one number"
     ),
   confirmpassword: yup
     .string()
-    .oneOf([yup.ref('password'), null], 'Passwords must match')
-    .required('Confirm Password is required'),
+    .oneOf([yup.ref("password"), null], "Passwords must match")
+    .required("Confirm Password is required"),
   phonenumber: yup
     .string()
-    .matches(/^\+?\d{8,14}$/, 'Phone number must be between 8 to 14 digits')
-    .required('Phone number is required'),
+    .matches(/^\+?\d{8,14}$/, "Phone number must be between 8 to 14 digits")
+    .required("Phone number is required"),
 });
 
 const Registration = () => {
   const navigate = useNavigate();
   const form = useForm({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
   });
 
   const { register, formState, handleSubmit } = form;
@@ -42,8 +43,19 @@ const Registration = () => {
   // Function to handle form submission
   const onSubmit = (data) => {
     console.log("Form submitted", data);
-    localStorage.setItem("user", JSON.stringify(data));
-    navigate('/bliss/login');
+    const { name, email, password, phonenumber, address, state, pincode } =
+      data;
+    const userData = {
+      name,
+      email,
+      password,
+      phonenumber,
+      address,
+      state,
+      pincode,
+    };
+    localStorage.setItem("user", JSON.stringify(userData));
+    navigate("/bliss/login");
   };
 
   return (
@@ -135,18 +147,17 @@ const Registration = () => {
             <Button
               type="submit"
               variant="contained"
-              color="primary"
               fullWidth
-              sx={{ mt: 2 }}
+              sx={commonStyles.button} // Apply common styles
             >
               Submit
             </Button>
-            <Box mt={2}>
-              <small className="form-text text-muted">
-                Already have an account?{" "}
-                <Link to="/bliss/login" className="text-info">Login</Link>
-              </small>
-            </Box>
+            <small className="form-text text-muted">
+              Already have an account?{" "}
+              <Link to="/bliss/login" className="text-info">
+                Login
+              </Link>
+            </small>
           </form>
         </Box>
       </Box>

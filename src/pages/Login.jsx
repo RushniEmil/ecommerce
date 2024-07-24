@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { TextField, Button, Box } from "@mui/material";
-import { Height } from "@mui/icons-material";
+import commonStyles from "../styles/commonStyles";
 
 // Validation schema using Yup
 const schema = yup.object({
@@ -72,15 +72,16 @@ const Login = () => {
               error={!!errors.password}
               helperText={errors.password?.message}
             />
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              fullWidth
-              sx={{ mt: 2, backgroundColor: "#3b5d50", borderColor: "#3b5d50" }}
-            >
-              Submit
-            </Button>
+          <Button
+  type="submit"
+  variant="contained"
+  color="primary"
+  fullWidth
+  sx={commonStyles.button}
+>
+  Submit
+</Button>
+
             <Box mt={2}>
               <small className="form-text text-muted">
                 If you don't have an account?{" "}

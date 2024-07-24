@@ -124,22 +124,32 @@ const Shop = () => {
         <div className="row">
           <div className="d-flex justify-content-between align-items-center">
             <div className="col-md-4">
-              <TextField
-                id="search"
-                type="text"
-                value={searchValue}
-                onChange={handleSearchChange}
-                placeholder="Search"
-                variant="standard"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchIcon />
-                    </InputAdornment>
-                  ),
-                }}
-                sx={commonStyles.textField} // Apply common styles
-              />
+            <TextField
+  id="search"
+  type="text"
+  value={searchValue}
+  onChange={handleSearchChange}
+  placeholder="Search"
+  variant="standard"
+  InputProps={{
+    startAdornment: (
+      <InputAdornment position="start">
+        <SearchIcon />
+      </InputAdornment>
+    ),
+  }}
+  sx={{
+    '& .MuiInputBase-root:before': {
+      borderBottomColor: '#3b5d50',
+    },
+    '&:hover .MuiInputBase-root:before': {
+      borderBottomColor: '#2d453c',
+    },
+    '&.Mui-focused .MuiInputBase-root:before': {
+      borderBottomColor: '#4a7b65',
+    },
+  }}
+/>
               <ToastContainer />
             </div>
             <div className="col-md-4 d-flex justify-content-end">
