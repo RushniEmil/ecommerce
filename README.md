@@ -4,7 +4,7 @@ Bliss is a modern e-commerce platform built with React. It provides a seamless s
 
 ## Demo
 
-A live demo of the application can be found [bliss Ecommerce Website](https://ecommercebliss.netlify.app/bliss/login)
+A live demo of the application can be found [bliss Ecommerce Website](https://ecommercebliss.netlify.app)
 
 ## Features
 
