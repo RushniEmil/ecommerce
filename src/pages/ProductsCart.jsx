@@ -60,7 +60,10 @@ const ProductCart = () => {
                               className="btn btn-outline-black decrease"
                               type="button"
                               onClick={() =>
-                                handleUpdateItemQuantity(item.id, item.quantity - 1)
+                                handleUpdateItemQuantity(
+                                  item.id,
+                                  item.quantity - 1
+                                )
                               }
                             >
                               &minus;
@@ -77,7 +80,10 @@ const ProductCart = () => {
                               className="btn btn-outline-black increase"
                               type="button"
                               onClick={() =>
-                                handleUpdateItemQuantity(item.id, item.quantity + 1)
+                                handleUpdateItemQuantity(
+                                  item.id,
+                                  item.quantity + 1
+                                )
                               }
                             >
                               &#43;
@@ -85,7 +91,7 @@ const ProductCart = () => {
                           </div>
                         </div>
                       </td>
-                      <td>${item.price * item.quantity}</td>
+                      <td>${(item.price * item.quantity).toFixed(2)}</td>
                       <td>
                         <button
                           className="btn btn-black btn-sm"
@@ -153,11 +159,12 @@ const ProductCart = () => {
                   <div className="col-md-6 text-right">
                     <strong className="text-black">
                       $
-                      {items.reduce(
-                        (total, item) =>
-                          total + item.price * item.quantity,
-                        0
-                      )}
+                      {items
+                        .reduce(
+                          (total, item) => total + item.price * item.quantity,
+                          0
+                        )
+                        .toFixed(2)}
                     </strong>
                   </div>
                 </div>
@@ -169,8 +176,7 @@ const ProductCart = () => {
                     <strong className="text-black">
                       $
                       {items.reduce(
-                        (total, item) =>
-                          total + item.price * item.quantity,
+                        (total, item) => total + item.price * item.quantity,
                         0
                       )}
                     </strong>

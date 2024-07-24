@@ -17,6 +17,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { debounce } from 'lodash';
 import { ClipLoader } from 'react-spinners'; // Import react-spinners
+import { fetchProductBySort } from "../services/apiService";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
