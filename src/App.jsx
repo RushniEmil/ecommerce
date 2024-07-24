@@ -7,33 +7,36 @@ import Registration from "./pages/Registration";
 import { CategoryProvider } from "./contexts/CategoryContext";
 import { useState } from "react";
 import ProductsCart from "./pages/ProductsCart";
-import { CartProvider } from "use-cart";
+import { CartProvider } from "react-use-cart";
 import { Navigate } from "react-router-dom";
+import Profile from "./pages/Profile";
+// import NotFound from "./pages/NotFound"; // Import your 404 component
+
+// Function to check if the user is logged in
+const isLoggedIn = () => !!localStorage.getItem('loggedin'); // Adjust based on your authentication method
+
+// Protected Route Component
+const PrivateRoute = ({ element }) => {
+  return isLoggedIn() ? element : <Navigate to="/bliss/login" />;
+};
 
 function App() {
-  // State to manage the selected category, default is "beauty"
   const [selectedCategory, setSelectedCategory] = useState("beauty");
 
   return (
-    // Providing the selected category and setter function to the CategoryProvider
     <CategoryProvider value={{ selectedCategory, setSelectedCategory }}>
-      {/* Providing cart functionalities through CartProvider */}
       <CartProvider>
-        {/* Setting up the Router for handling navigation */}
         <BrowserRouter>
           <Routes>
-            {/* Define the layout and nested routes */}
+            {/* Main layout and route definitions */}
             <Route path="/" element={<Layout />}>
-              {/* Route redirect to the Login page */}
               <Route index element={<Navigate to="/bliss/login" />} />
-              {/* Route for the Login page */}
               <Route path="bliss/login" element={<Login />} />
-              {/* Route for the Registration page */}
               <Route path="bliss/registration" element={<Registration />} />
-              {/* Route for the Shop page */}
               <Route path="bliss/shop" element={<Shop />} />
-              {/* Route for the Products Cart page */}
               <Route path="bliss/cart" element={<ProductsCart />} />
+              <Route path="bliss/profile" element={<PrivateRoute element={<Profile />} />} />
+              {/* <Route path="*" element={<NotFound />} /> */}
             </Route>
           </Routes>
         </BrowserRouter>

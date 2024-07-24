@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
+import { TextField, Button, Box } from "@mui/material";
 
 // Schema validation using Yup
 const schema = yup.object({
@@ -46,114 +47,110 @@ const Registration = () => {
   };
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="d-flex">
-          <div className="col-md-4 mx-auto p-5 border border-2 rounded-3 my-5">
-            <h2 className="text-center">CREATE AN ACCOUNT</h2>
-            <form onSubmit={handleSubmit(onSubmit)} noValidate>
-              <div className="form-group mb-3">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="name"
-                  placeholder="Your Name"
-                  {...register("name")}
-                />
-                <small className="form-text text-danger">
-                  {errors.name?.message}
-                </small>
-              </div>
-              <div className="form-group mb-3">
-                <input
-                  type="email"
-                  className="form-control"
-                  id="exampleInputEmail1"
-                  placeholder="Enter email"
-                  {...register("email")}
-                />
-                <small className="form-text text-danger">
-                  {errors.email?.message}
-                </small>
-              </div>
-              <div className="form-group mb-3">
-                <input
-                  type="password"
-                  className="form-control"
-                  id="password"
-                  placeholder="Password"
-                  {...register("password")}
-                />
-                <small className="form-text text-danger">
-                  {errors.password?.message}
-                </small>
-              </div>
-              <div className="form-group mb-3">
-                <input
-                  type="password"
-                  className="form-control"
-                  id="confirmpassword"
-                  placeholder="Confirm Password"
-                  {...register("confirmpassword")}
-                />
-                <small className="form-text text-danger">
-                  {errors.confirmpassword?.message}
-                </small>
-              </div>
-              <div className="form-group mb-3">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="phonenumber"
-                  placeholder="Your Phone Number"
-                  {...register("phonenumber")}
-                />
-                <small className="form-text text-danger">
-                  {errors.phonenumber?.message}
-                </small>
-              </div>
-              <div className="form-group mb-3">
-                <textarea
-                  id="address"
-                  cols="45"
-                  className="form-control"
-                  rows="4"
-                  placeholder="Your Address"
-                  {...register("address")}
-                ></textarea>
-              </div>
-              <div className="form-group mb-3">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="state"
-                  placeholder="Your State"
-                  {...register("state")}
-                />
-              </div>
-              <div className="form-group mb-3">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="pincode"
-                  placeholder="Your Pincode"
-                  {...register("pincode")}
-                />
-              </div>
-              <button type="submit" className="btn btn-primary">
-                Submit
-              </button>
-              <div className="form-group">
-                <small className="form-text text-muted">
-                  Already have an account?
-                  <Link to="/bliss/login" className="text-info">Login</Link>
-                </small>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Box className="container">
+      <Box className="row">
+        <Box className="col-md-4 mx-auto p-5 border border-2 rounded-3 my-5">
+          <h2 className="text-center">CREATE AN ACCOUNT</h2>
+          <form onSubmit={handleSubmit(onSubmit)} noValidate>
+            <TextField
+              fullWidth
+              margin="normal"
+              id="name"
+              label="Your Name"
+              variant="outlined"
+              {...register("name")}
+              error={!!errors.name}
+              helperText={errors.name?.message}
+            />
+            <TextField
+              fullWidth
+              margin="normal"
+              id="email"
+              type="email"
+              label="Email"
+              variant="outlined"
+              {...register("email")}
+              error={!!errors.email}
+              helperText={errors.email?.message}
+            />
+            <TextField
+              fullWidth
+              margin="normal"
+              id="password"
+              type="password"
+              label="Password"
+              variant="outlined"
+              {...register("password")}
+              error={!!errors.password}
+              helperText={errors.password?.message}
+            />
+            <TextField
+              fullWidth
+              margin="normal"
+              id="confirmpassword"
+              type="password"
+              label="Confirm Password"
+              variant="outlined"
+              {...register("confirmpassword")}
+              error={!!errors.confirmpassword}
+              helperText={errors.confirmpassword?.message}
+            />
+            <TextField
+              fullWidth
+              margin="normal"
+              id="phonenumber"
+              type="text"
+              label="Phone Number"
+              variant="outlined"
+              {...register("phonenumber")}
+              error={!!errors.phonenumber}
+              helperText={errors.phonenumber?.message}
+            />
+            <TextField
+              fullWidth
+              margin="normal"
+              id="address"
+              label="Your Address"
+              variant="outlined"
+              multiline
+              rows={4}
+              {...register("address")}
+            />
+            <TextField
+              fullWidth
+              margin="normal"
+              id="state"
+              label="Your State"
+              variant="outlined"
+              {...register("state")}
+            />
+            <TextField
+              fullWidth
+              margin="normal"
+              id="pincode"
+              label="Your Pincode"
+              variant="outlined"
+              {...register("pincode")}
+            />
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              fullWidth
+              sx={{ mt: 2 }}
+            >
+              Submit
+            </Button>
+            <Box mt={2}>
+              <small className="form-text text-muted">
+                Already have an account?{" "}
+                <Link to="/bliss/login" className="text-info">Login</Link>
+              </small>
+            </Box>
+          </form>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
